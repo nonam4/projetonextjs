@@ -1,0 +1,24 @@
+dashboard com:
+-quantidade de 'contratos ativos' (total de clientes)
+-'inventário' de impressoras (quantidade de impressoras no total)
+-'impressões totais' no mês
+-'excedentes totais' no mês
+-'suprimentos/produtos' disponiveis
+-talvez um grafico em barras ou pizza
+	quantidade clientes com alertas**
+	quantidade de clientes com erros*
+	quantidade de clientes com excedentes
+	quantidade de clientes ok
+-atividades recentes
+	ex: Usuario tal fez tal ação
+	ex: Fulano finalizou o atendimento para .... com/sem abastecimento de maquinas
+	ex: Ciclano alterou franquia de Impressora tal em tal cliente
+
+barra superior com:
+-seletor de data
+-seletor de listagem (todos, excedente, 
+	alertas**(impressoras não coletando ou abastecimento), 
+	erros*(sem impressoras ou desatualizados)
+-gerar relatórios (todos os clientes, somente com excedentes ou interno)
+-search box
+-botão de configuração com logout e modo escuro/claro

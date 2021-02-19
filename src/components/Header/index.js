@@ -1,33 +1,22 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 
-import Switch from '../Switch'
 import Icons from '../Icons'
-import { Container, Settings } from './styles'
+import { Container, LogoContainer, Logo, Texto, Settings } from './styles'
 
 function Header({toggleTheme}) {
-    const { colors, title } = useContext(ThemeContext)
-    //console.log(colors.switchColor, colors.azul)
+    const { colors } = useContext(ThemeContext)
+
     return (
         <Container>
-            Header
+            <LogoContainer>
+                <Logo src='/icon.png'></Logo>
+                <Texto src='/nome.png'></Texto>
+            </LogoContainer>
             <Settings>
-                <Switch 
-                    onChange={toggleTheme}
-                    checked={title === 'dark'}
-                    checkedIcon={false}
-                    uncheckedIcon={false}
-                    height={20}
-                    width={40}
-                    handleDiameter={14}
-                    offColor={colors.switchColor}
-                    onColor={colors.switchColor}
-                    hoverColor={colors.azul}
-                    onHandleColor={colors.handleColor}
-                    offHandleColor={colors.handleColor}
-                />
-
-                <Icons name={'download'} color={colors.switchColor} size={24}/>
+                <Icons name={'theme'} onClick={toggleTheme} title={'Tema Claro/Escuro'}/> 
+                <Icons name={'download'} title={'Central de Downloads'}/>
+                <Icons name={'logout'} title={'Logout'}/>
             </Settings>
             
         </Container>
@@ -35,3 +24,15 @@ function Header({toggleTheme}) {
 }
 
 export default Header
+
+/*
+<div>
+                    <Stroke>
+                        <Stroke>MUNDO</Stroke><br></br><Stroke>ELETRONICO</Stroke>
+                    </Stroke>
+                    <TextContainer>
+                        <Text>MUNDO</Text><br></br><Text>ELETRONICO</Text>
+                    </TextContainer>
+                </div>
+
+                */

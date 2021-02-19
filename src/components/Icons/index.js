@@ -8,8 +8,9 @@ const Svg = styled.svg.attrs({
     xmlnsXlink: 'http://www.w3.org/1999/xlink',
 })`
     width: ${({ width }) => width}px;
-    height: ${({ height }) => height}px;
+    height: ${({ height }) => height + 4}px;
     margin: 0.5rem;
+    padding-bottom: 2px;
     cursor: pointer;
     transition: all ease 0.05s;
     > path {
@@ -19,10 +20,11 @@ const Svg = styled.svg.attrs({
         > path {
             fill: ${({ hover }) => hover};
         };
+        border-bottom: solid 2px ${({ hover }) => hover};
     }
 `
 
-const Icon = ({ className, name, color, size }) => {
+const Icon = (props) => {
 
     const { colors } = useContext(ThemeContext)
 
@@ -55,11 +57,21 @@ const Icon = ({ className, name, color, size }) => {
         'menu-up': "M7,15L12,10L17,15H7Z",
         'downloads': "M8 17V15H16V17H8M16 10L12 14L8 10H10.5V6H13.5V10H16M12 2C17.5 2 22 6.5 22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2M12 4C7.58 4 4 7.58 4 12C4 16.42 7.58 20 12 20C16.42 20 20 16.42 20 12C20 7.58 16.42 4 12 4Z",
         'logout': "M16,17V14H9V10H16V7L21,12L16,17M14,2A2,2 0 0,1 16,4V6H14V4H5V20H14V18H16V20A2,2 0 0,1 14,22H5A2,2 0 0,1 3,20V4A2,2 0 0,1 5,2H14Z",
+        'theme': "M7.5,2C5.71,3.15 4.5,5.18 4.5,7.5C4.5,9.82 5.71,11.85 7.53,13C4.46,13 2,10.54 2,7.5A5.5,5.5 0 0,1 7.5,2M19.07,3.5L20.5,4.93L4.93,20.5L3.5,19.07L19.07,3.5M12.89,5.93L11.41,5L9.97,6L10.39,4.3L9,3.24L10.75,3.12L11.33,1.47L12,3.1L13.73,3.13L12.38,4.26L12.89,5.93M9.59,9.54L8.43,8.81L7.31,9.59L7.65,8.27L6.56,7.44L7.92,7.35L8.37,6.06L8.88,7.33L10.24,7.36L9.19,8.23L9.59,9.54M19,13.5A5.5,5.5 0 0,1 13.5,19C12.28,19 11.15,18.6 10.24,17.93L17.93,10.24C18.6,11.15 19,12.28 19,13.5M14.6,20.08L17.37,18.93L17.13,22.28L14.6,20.08M18.93,17.38L20.08,14.61L22.28,17.15L18.93,17.38M20.08,12.42L18.94,9.64L22.28,9.88L20.08,12.42M9.63,18.93L12.4,20.08L9.87,22.27L9.63,18.93Z",
+    }
+
+    const padrao = {
+        color: colors.switchColor,
+        size: 24,
+        hover: colors.hover,
     }
 
     return (
-        <Svg hover={colors.azul} viewBox="0 0 24 24" height={size} width={size} className={className}>
-            <path fill={color} d={icons[name]}/>
+        <Svg hover={props.hover || colors.hover} viewBox="0 0 24 24" height={props.size || padrao.size} width={props.size || padrao.size} 
+            className={props.className} onClick={props.onClick} title={props.title}>
+                <path fill={props.color || padrao.color} d={icons[props.name]}/>
+                
+            {props.title && <title>{props.title}</title>}
         </Svg>
     )
 }

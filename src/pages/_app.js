@@ -13,12 +13,10 @@ function App({ Component, pageProps }) {
     }
 
     return (
-        <>
-            <ThemeProvider theme={theme}>
-                <GlobalStyle />
-                <Component {...pageProps} toggleTheme={toggleTheme} />
-            </ThemeProvider>
-        </>
+        <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <Component {...pageProps} toggleTheme={toggleTheme} />
+        </ThemeProvider>
     )
 }
 

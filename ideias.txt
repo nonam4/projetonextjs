@@ -22,3 +22,8 @@ barra superior com:
 -gerar relatórios (todos os clientes, somente com excedentes ou interno)
 -search box
 -botão de configuração com logout e modo escuro/claro
+
+tela de cadastrar cliente/fornecedor ter diferentes icones para diferentes tipos de cadastro
+-cadastro de locação - icone de empresa
+-cadastro de ti - icone de pessoa
+-cadastro de fornecedor - icone de trabalhador

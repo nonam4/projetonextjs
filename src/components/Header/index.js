@@ -1,22 +1,30 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 
-import Icons from '../Icons'
-import { Container, LogoContainer, Logo, Texto, Settings } from './styles'
+import icons from '../Icons'
+import { Container, Settings, Svg } from './styles'
 
-function Header({toggleTheme}) {
+function Icon(props) {
+
     const { colors } = useContext(ThemeContext)
 
     return (
+        <Svg viewBox="0 0 24 24" height={24} width={24} 
+            className={props.className} onClick={props.onClick} title={props.title}>
+                <path fill={colors.textos} d={icons[props.name]}/>
+                
+            {props.title && <title>{props.title}</title>}
+        </Svg>
+    )
+}
+
+function Header({toggleTheme}) {
+    return (
         <Container>
-            <LogoContainer>
-                <Logo src='/icon.png'></Logo>
-                <Texto src='/nome.png'></Texto>
-            </LogoContainer>
             <Settings>
-                <Icons name={'theme'} onClick={toggleTheme} title={'Tema Claro/Escuro'}/> 
-                <Icons name={'download'} title={'Central de Downloads'}/>
-                <Icons name={'logout'} title={'Logout'}/>
+                <Icon name={'theme'} onClick={toggleTheme} title={'Tema Claro/Escuro'}/> 
+                <Icon name={'download'} title={'Central de Downloads'}/>
+                <Icon name={'logout'} title={'Logout'}/>
             </Settings>
             
         </Container>
@@ -24,15 +32,3 @@ function Header({toggleTheme}) {
 }
 
 export default Header
-
-/*
-<div>
-                    <Stroke>
-                        <Stroke>MUNDO</Stroke><br></br><Stroke>ELETRONICO</Stroke>
-                    </Stroke>
-                    <TextContainer>
-                        <Text>MUNDO</Text><br></br><Text>ELETRONICO</Text>
-                    </TextContainer>
-                </div>
-
-                */

@@ -10,11 +10,65 @@ export const Container = styled.div`
     padding: 0 1rem 0 0;
     border-bottom: solid 1px ${({ theme }) => theme.colors.bordas};
     justify-content: space-between;
-    box-shadow: 0px 2px 4px ${({ theme }) => theme.colors.shadow};
 `
-export const Settings = styled.div`
+export const User = styled.div`
+    height: 60px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    :hover {
+        div {
+            opacity: 1;
+            z-index: 1;
+        }
+        span {
+            border-bottom: solid 2px ${({ theme }) => theme.colors.hover};
+            color: ${({ theme }) => theme.colors.hover};
+        }
+    }
+`
+export const Avatar = styled.span`
+    border-bottom: solid 2px transparent;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+`
+export const Photo = styled.img`
+    width: 35px;
+    margin-right: 0.8rem;
+    border-radius: 50%;
+`
+export const Settings = styled.div`
+    transition: all ease 0.15s;
+    opacity: 0;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: ${({ theme }) => theme.colors.menus};
+    border: solid 1px ${({ theme }) => theme.colors.floating};
+    padding: 0.8rem 0px;
+    width: 230px;
+    border-radius: 5px;
+    position: absolute;
+    top: 65px;
+    right: -3px;
+    ::before {
+        content: "";
+        position: absolute;
+        right: 10px;
+        top: -10px;
+        margin-left: 10px;
+        width: 0px;
+        height: 0px;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid ${({ theme }) => theme.colors.hover};
+        clear: both;
+    }
 `
 export const Svg = styled.svg.attrs({ 
     version: '1.1', 
@@ -23,11 +77,11 @@ export const Svg = styled.svg.attrs({
 })`
     width: ${({ width }) => width}px;
     height: ${({ height }) => height}px;
-    padding: 0.3rem;
+    padding: 0.5rem;
     cursor: pointer;
     transition: all ease 0.05s;
     box-sizing: content-box;
-    margin: 2px;
+    border-bottom: solid 2px transparent;
     > path {
         transition: all ease 0.15s;
     };
@@ -35,7 +89,30 @@ export const Svg = styled.svg.attrs({
         > path {
             fill: ${({ theme }) => theme.colors.hover};
         };
-        margin-bottom: 0px;
         border-bottom: solid 2px ${({ theme }) => theme.colors.hover};
+    }
+`
+export const SettingsSvg = styled.svg.attrs({ 
+    version: '1.1', 
+    xmlns: 'http://www.w3.org/2000/svg', 
+    xmlnsXlink: 'http://www.w3.org/1999/xlink',
+})`
+    width: ${({ width }) => width}px;
+    height: ${({ height }) => height}px;
+    margin-right: ${({ margin }) => margin}rem;
+`
+export const SettingsItem = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    line-height: 40px;
+    padding: 0 1rem;
+    :hover {
+        border-left: solid 5px ${({ theme }) => theme.colors.hover};
+        background: ${({ theme }) => theme.colors.highlight};
+        svg path{
+            fill: ${({ theme }) => theme.colors.hover};
+        }
     }
 `

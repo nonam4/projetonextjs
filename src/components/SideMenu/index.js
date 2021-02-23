@@ -56,7 +56,7 @@ function SideMenu() {
                 <MenuItem> <Icon name={'add-user'} title={'Cadastrar'} /> Cadastrar </MenuItem>
             </MenuSection>
             <MenuSection>
-                <MenuTitle>LOCAÇÂO</MenuTitle>
+                <MenuTitle>LOCAÇÃO</MenuTitle>
                 <MenuItem> <Icon name={'sem-impressora'} title={'Listar Impressoras'} /> Listar Impressoras </MenuItem>
                 <MenuItem> <Icon name={'listar-atendimento'} title={'Listar Atendimentos'} /> Listar Atendimentos </MenuItem>
                 <MenuItem> <Icon name={'novo-atendimento'} title={'Novo Atendimento'} /> Novo Atendimento </MenuItem>

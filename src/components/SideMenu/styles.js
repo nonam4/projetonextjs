@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const Container = styled.div`
     height: 100%;
     width: 250px;
-    margin-left: ${({ expanded }) => expanded ? '0px' : '-250px'};
+    margin-left: ${({ expanded, desktop }) => desktop && expanded ? '0px' : '-250px'};
     flex-shrink: 0;
     flex-grow: 0;
     z-index: 0;
@@ -75,40 +75,5 @@ export const MenuItem = styled.div`
         svg path{
             fill: ${({ theme }) => theme.colors.hover};
         }
-    }
-`
-export const Svg = styled.svg.attrs({ 
-    version: '1.1', 
-    xmlns: 'http://www.w3.org/2000/svg', 
-    xmlnsXlink: 'http://www.w3.org/1999/xlink',
-})`
-    width: ${({ width }) => width}px;
-    height: ${({ height }) => height}px;
-    margin-right: ${({ margin }) => margin}rem;
-`
-export const Expansor = styled.svg.attrs({ 
-    version: '1.1', 
-    xmlns: 'http://www.w3.org/2000/svg', 
-    xmlnsXlink: 'http://www.w3.org/1999/xlink',
-})`
-    width: ${({ width }) => width}px;
-    height: ${({ height }) => height}px;
-    position: absolute;
-    right: ${({ expanded }) => expanded ? '12px' : '-46px'};
-    top: 13px;
-    padding: 0.3rem;
-    cursor: pointer;
-    transition: all ease 0.05s;
-    box-sizing: content-box;
-    border-bottom: solid 2px transparent;
-    > path {
-        transition: all ease 0.15s;
-    };
-    :hover {
-        > path {
-            fill: ${({ theme }) => theme.colors.hover};
-        };
-        margin-bottom: 0px;
-        border-bottom: solid 2px ${({ theme }) => theme.colors.hover};
     }
 `

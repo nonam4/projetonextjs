@@ -2,6 +2,12 @@ import styled from "styled-components"
 
 export const Container = styled.div`
     width: 100%;
+    height: 100%;
+    margin-left: ${({ expanded, desktop }) => desktop? '0px' : expanded? '-250px' : '0px'};
+    transition: all ease 0.15s;
+`
+export const Header = styled.div`
+    width: 100%;
     height: 60px;
     background: ${({ theme }) => theme.colors.menus};
     display: flex;
@@ -69,37 +75,6 @@ export const Settings = styled.div`
         border-top: 10px solid ${({ theme }) => theme.colors.hover};
         clear: both;
     }
-`
-export const Svg = styled.svg.attrs({ 
-    version: '1.1', 
-    xmlns: 'http://www.w3.org/2000/svg', 
-    xmlnsXlink: 'http://www.w3.org/1999/xlink',
-})`
-    width: ${({ width }) => width}px;
-    height: ${({ height }) => height}px;
-    padding: 0.5rem;
-    cursor: pointer;
-    transition: all ease 0.05s;
-    box-sizing: content-box;
-    border-bottom: solid 2px transparent;
-    > path {
-        transition: all ease 0.15s;
-    };
-    :hover {
-        > path {
-            fill: ${({ theme }) => theme.colors.hover};
-        };
-        border-bottom: solid 2px ${({ theme }) => theme.colors.hover};
-    }
-`
-export const SettingsSvg = styled.svg.attrs({ 
-    version: '1.1', 
-    xmlns: 'http://www.w3.org/2000/svg', 
-    xmlnsXlink: 'http://www.w3.org/1999/xlink',
-})`
-    width: ${({ width }) => width}px;
-    height: ${({ height }) => height}px;
-    margin-right: ${({ margin }) => margin}rem;
 `
 export const SettingsItem = styled.div`
     width: 100%;

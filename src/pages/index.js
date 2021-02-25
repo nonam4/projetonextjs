@@ -16,7 +16,8 @@ function Index({ toggleTheme }) {
             let condition = window.innerWidth > 760
             setDesktop(condition)
         }
-
+        
+        setExpanded(window.innerWidth > 760)
         handleResize()
         
         window.addEventListener('resize', handleResize)
@@ -30,7 +31,8 @@ function Index({ toggleTheme }) {
                 <link rel="icon" href="/icon.png" />
                 <meta name='theme-color' content={colors.background}></meta>
             </Head>
-            <Content toggleTheme={toggleTheme} expanded={expanded} desktop={desktop}/>
+            <Content toggleTheme={toggleTheme} expanded={expanded} desktop={desktop}>
+            </Content>
             <SideMenu expanded={expanded} setExpanded={setExpanded} desktop={desktop}/>
         </>
     )

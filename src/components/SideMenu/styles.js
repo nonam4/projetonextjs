@@ -11,7 +11,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     position: relative;
-    border-right: solid 1px ${({ theme }) => theme.colors.bordas};
+    border-right: solid 1px ${({ theme }) => theme.colors.borders};
     align-items: center;
     transition: all ease 0.15s;
     padding-top: 60px;
@@ -24,7 +24,7 @@ export const Footer = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 0.5rem;
-    border-top: solid 1px ${({ theme }) => theme.colors.bordas};
+    border-top: solid 1px ${({ theme }) => theme.colors.borders};
     font-size: 10px;
     color: ${({ theme }) => theme.colors.floating};
 `
@@ -43,7 +43,7 @@ export const Text = styled.div`
     padding: 0.2rem 0.5rem;
     margin-bottom: 1px;
     border-bottom: solid 1px transparent;
-    color: ${({ theme }) => theme.colors.textos};
+    color: ${({ theme }) => theme.colors.texts};
     :hover{
         border-bottom: solid 1px ${({ theme }) => theme.colors.hover};
         color: ${({ theme }) => theme.colors.hover};

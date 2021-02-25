@@ -1,5 +1,5 @@
+import { useContext } from 'react'
 import styled, { ThemeContext } from "styled-components"
-import React, { useContext } from 'react'
 import icons from './index'
 
 export const Svg = styled.svg.attrs({ 
@@ -14,17 +14,17 @@ export const Svg = styled.svg.attrs({
 
 function UnderlineIcon(props) {
     const { colors } = useContext(ThemeContext)
-    const padrao = {
+    const settings = {
         size: 24,
         margin: '0.8',
-        color: colors.textos,
+        color: colors.texts,
         name: 'undefined'
     }
 
     return (
-        <Svg viewBox="0 0 24 24" height={props.size? props.size : padrao.size} width={props.size? props.size : padrao.size} 
-            margin={props.margin? props.margin : padrao.margin}  onClick={props.onClick}>
-                <path fill={props.color? props.color : padrao.color} d={icons[props.name? props.name : padrao.name]}/>                
+        <Svg viewBox="0 0 24 24" height={props.size? props.size : settings.size} width={props.size? props.size : settings.size} 
+            margin={props.margin? props.margin : settings.margin}  onClick={props.onClick}>
+                <path fill={props.color? props.color : settings.color} d={icons[props.name? props.name : settings.name]}/>                
         </Svg>
     )
 }

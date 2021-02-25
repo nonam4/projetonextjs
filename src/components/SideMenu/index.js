@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from 'next/link'
 import { version } from '../../../package.json'
 
@@ -13,13 +12,13 @@ function SideMenu({ expanded, setExpanded, desktop }) {
 
             <MenuSection>
                 <MenuTitle>GERAL</MenuTitle>
-                <MenuItem> <MenuIcon name={'dashboard'} title={'Dashboard'} /> Dashboard </MenuItem>
-                <MenuItem> <MenuIcon name={'estoque'} title={'Suprimentos'} /> Suprimentos </MenuItem>
+                <MenuItem> <MenuIcon name={'dashboard'} /> Dashboard </MenuItem>
+                <MenuItem> <MenuIcon name={'estoque'} /> Suprimentos </MenuItem>
             </MenuSection>
             <MenuSection>
                 <MenuTitle>PESSOAS</MenuTitle>
-                <MenuItem> <MenuIcon name={'list-user'} title={'Listar'} /> Listar </MenuItem>
-                <MenuItem> <MenuIcon name={'add-user'} title={'Cadastrar'} /> Cadastrar </MenuItem>
+                <MenuItem> <MenuIcon name={'list-user'} /> Listar </MenuItem>
+                <MenuItem> <MenuIcon name={'add-user'} /> Cadastrar </MenuItem>
             </MenuSection>
             <MenuSection>
                 <MenuTitle>LOCAÇÃO</MenuTitle>

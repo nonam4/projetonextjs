@@ -14,7 +14,7 @@ export const Header = styled.div`
     align-items: center;
     flex-direction: row-reverse;
     padding: 0 1rem 0 0;
-    border-bottom: solid 1px ${({ theme }) => theme.colors.bordas};
+    border-bottom: solid 1px ${({ theme }) => theme.colors.borders};
     justify-content: space-between;
 `
 export const User = styled.div`
@@ -90,4 +90,10 @@ export const SettingsItem = styled.div`
             fill: ${({ theme }) => theme.colors.hover};
         }
     }
+`
+export const View = styled.div`
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
 `

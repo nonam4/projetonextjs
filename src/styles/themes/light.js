@@ -7,9 +7,9 @@ export default {
         shadow: '#0000000d',
         hover: '#0070f3',
         menus: '#fff',
-        textos: '#1e1e1e',
-        bordas: '#eaeaea',
-        floating: '#c1c1c1',
+        texts: '#1e1e1e',
+        borders: '#dbdbdb',
+        floating: '#9f9f9f',
         azul: '#2957a4',
         vermelho: '#990000'
     }

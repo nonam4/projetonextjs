@@ -1,9 +1,7 @@
-import React from 'react'
-
 import Icon from '../Icons/MenuIcon'
-import { Container, Header, User, Avatar, Photo, Settings, SettingsItem } from './styles'
+import { Container, Header, User, Avatar, Photo, Settings, SettingsItem, View } from './styles'
 
-function Content({ toggleTheme, expanded, desktop }) {
+function Content({ toggleTheme, expanded, desktop, children }) {
     return (
         <Container expanded={expanded} desktop={desktop}>
             <Header>
@@ -19,6 +17,9 @@ function Content({ toggleTheme, expanded, desktop }) {
                     </Settings>
                 </User>
             </Header>
+            <View>
+                {children}
+            </View>
         </Container>
     )
 }

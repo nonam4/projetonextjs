@@ -1,9 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-export default createGlobalStyle`
-    @font-face { 
-        font-family: MundoEletronico; 
-        src: url('/stop.ttf'); } 
+export default createGlobalStyle` 
     * {
         box-sizing: border-box;
         padding: 0;
@@ -21,7 +18,7 @@ export default createGlobalStyle`
         overflow: hidden;
         background: ${({ theme }) => theme.colors.background};
         font-size: 14px;
-        color: ${({ theme }) => theme.colors.textos};
+        color: ${({ theme }) => theme.colors.texts};
     }
     #__next {
         height: 100%;

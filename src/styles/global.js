@@ -5,7 +5,7 @@ export default createGlobalStyle`
         box-sizing: border-box;
         padding: 0;
         margin: 0;
-        transition: background ease 0.15s, border ease 0.15s, margin ease 0.15s, color ease 0.05s;
+        transition: background ease 0.15s, border ease 0.15s, margin ease 0.15s, color ease 0.05s, fill ease 0.15s, filter ease 0.15s;
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
             Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     }

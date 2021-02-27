@@ -8,6 +8,7 @@ export default {
         hover: '#0070f3',
         menus: '#fff',
         texts: '#1e1e1e',
+        buttonTexts: '#f2f4f8',
         borders: '#dbdbdb',
         floating: '#9f9f9f',
         azul: '#2957a4',

@@ -55,4 +55,7 @@ export const Viewer = styled.div`
     height: 20px;
     top: 15px;
     right: 0;
+    :hover path {
+        fill: ${({ theme }) => theme.colors.hover};
+    }
 `

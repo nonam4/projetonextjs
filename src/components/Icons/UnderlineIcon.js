@@ -17,9 +17,6 @@ export const Svg = styled.svg.attrs({
     transition: all ease 0.05s;
     box-sizing: content-box;
     border-bottom: solid 2px transparent;
-    > path {
-        transition: all ease 0.15s;
-    };
     :hover {
         > path {
             fill: ${({ theme }) => theme.colors.hover};

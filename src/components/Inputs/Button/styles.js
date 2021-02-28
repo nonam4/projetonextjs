@@ -13,6 +13,6 @@ export const Container = styled.button`
     font-size: 14px;
     border-radius: 5px;
     :hover {
-        filter: brightness(0.8);
+        filter: brightness(0.85);
     }
 `

@@ -7,17 +7,52 @@ import Content from '../components/Login'
 import TextField from '../components/Inputs/TextField'
 import Button from '../components/Inputs/Button'
 import Checkbox from '../components/Inputs/Checkbox'
+import Erros from '../components/Errors'
 
 function Login({ toggleTheme }) {
     const { colors } = useContext(ThemeContext)
     const [user, setUser] = useState('')
     const [pass, setPass] = useState('')
-    //stay logged
-    const [stay, setStay] = useState(false)
+    const [stay, setStay] = useState(false) //stay logged
     const [error, setError] = useState(false)
+    const [showError, setShowError] = useState(false)
 
     function handleLogin() {
-        console.log(`trying to login and should stay logged? ${stay}`)
+        if(checkForm()) {
+            console.log(`trying to login, should stay logged? ${stay}`)
+        } 
+    }
+
+    function checkForm() {
+        if(user.length > 3) {
+            if(pass.length > 3) {
+                return true
+            } else {
+                showErrors('Senha em branco ou inválida!')
+                return false
+            }
+        } else {
+            showErrors('Usuário em branco ou inválido!')
+            return false
+        }
+    }
+
+    function showErrors(msg) {
+        setShowError(true)
+        setTimeout(() => {
+            setError(msg)
+        }, 100)
+
+        setTimeout(() => {
+            hideErrors()
+        }, 7000)
+    }
+
+    function hideErrors() {
+        setError(false)
+        setTimeout(() => {
+            setShowError(false)
+        }, 150)
     }
 
     return(
@@ -33,6 +68,7 @@ function Login({ toggleTheme }) {
                 <Checkbox text={'Ficar conectado'} changeReturn={ () => setStay(!stay) } />
                 <Button text={'Entrar'} onClick={ handleLogin } />
             </Content>
+            {showError && <Erros close={ hideErrors } error={error} />}
         </>
     )
 }

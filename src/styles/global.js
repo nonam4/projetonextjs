@@ -23,9 +23,12 @@ export default createGlobalStyle`
     }
     #__next {
         height: 100%;
+        min-height: 650px;
         width: 100%;
         min-width: 360px;
         display: flex;
         flex-direction: row-reverse;
+        overflow: hidden;
+        overflow-y: auto;
     }
 `

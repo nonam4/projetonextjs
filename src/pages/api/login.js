@@ -1,5 +1,5 @@
 import database from './_database.js'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 export default async (req, res) => {
     let username = req.body.username

@@ -22,6 +22,9 @@ export const Close = styled.div`
     position: absolute;
     right: 5px;
     top: 5px;
+    path {
+        fill: ${({ theme }) => theme.colors.buttonTexts};
+    }
     :hover svg {
         filter: brightness(0.85);
     }

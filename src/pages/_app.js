@@ -7,15 +7,16 @@ import dark from '../styles/themes/dark'
 
 function App({ Component, pageProps }) {
     const [theme, setTheme] = usePersistedState('theme', light)
+    const [user, setUser] = usePersistedState('user', undefined)
 
-    const toggleTheme = () => {
+    function toggleTheme() {
         setTheme(theme.title === 'light' ? dark : light)
     }
 
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyle />
-            <Component {...pageProps} toggleTheme={toggleTheme} />
+            <Component {...pageProps} toggleTheme={toggleTheme} user={user} setUser={setUser} />
         </ThemeProvider>
     )
 }

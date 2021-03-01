@@ -1,24 +1,24 @@
 import Icon from '../Icons/MenuIcon'
 import { Container, Header, User, Avatar, Photo, Settings, SettingsItem, View } from './styles'
 
-function Content({ toggleTheme, expanded, desktop, children }) {
+function Content(props) {
     return (
-        <Container expanded={expanded} desktop={desktop}>
+        <Container expanded={props.expanded} desktop={props.desktop}>
             <Header>
                 <User>
                     <Avatar>
-                        <Photo src='https://alunos.b7web.com.br/media/avatars/5ff4c7550de9b42dbacd7847.jpg'/>
-                        Luiz Carlos
+                        <Photo src={props.user.photo}/>
+                        {props.user.nome}
                     </Avatar>
                     <Settings>
                         <SettingsItem> <Icon name={'list-user'} /> Perfil </SettingsItem>
-                        <SettingsItem onClick={toggleTheme}> <Icon name={'theme'} /> Tema Claro / Escuro </SettingsItem>
-                        <SettingsItem> <Icon name={'logout'} /> Logout </SettingsItem>
+                        <SettingsItem onClick={props.toggleTheme}> <Icon name={'theme'} /> Tema Claro / Escuro </SettingsItem>
+                        <SettingsItem onClick={props.logout}> <Icon name={'logout'} /> Logout </SettingsItem>
                     </Settings>
                 </User>
             </Header>
             <View>
-                {children}
+                {props.children}
             </View>
         </Container>
     )

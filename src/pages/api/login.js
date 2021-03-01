@@ -2,18 +2,15 @@ import database from './_database.js'
 import bcrypt from 'bcrypt'
 
 export default async (req, res) => {
-    let email = req.body.email
-    let senha = req.body.senha
+    let username = req.body.username
+    let password = req.body.password
     let usuario
 
-    await database.collection('/users/').where('email', '==', email).get().then(col => {
+    await database.collection('/users/').where('username', '==', username).get().then(col => {
         col.forEach(doc => {
             // Compara a senha em string com o Hash armazenado
-            if(bcrypt.compareSync(senha, doc.data().hash)) {
-                usuario = {
-                    id: doc.id,
-                    ...doc.data()
-                }
+            if(bcrypt.compareSync(password, doc.data().hash)) {
+                usuario = { id: doc.id, ...doc.data() }
             }
         })
         // Checa se o usuário é valido

@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "bcrypt": "^5.0.0",
+    "bcrypt": "^5.0.1",
     "cross-env": "^7.0.3",
     "firebase-admin": "^9.4.2",
     "next": "^10.0.7",

@@ -5,8 +5,7 @@ function usePersistedState(key, initialState) {
 
     useEffect(() => {
         let storageValue = localStorage.getItem(key)
-        
-        if(storageValue) setState(JSON.parse(storageValue))
+        storageValue && setState(JSON.parse(storageValue))
     }, [])
 
     useEffect(() => {

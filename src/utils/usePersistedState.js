@@ -5,11 +5,19 @@ function usePersistedState(key, initialState) {
 
     useEffect(() => {
         let storageValue = localStorage.getItem(key)
-        storageValue && setState(JSON.parse(storageValue))
+        if(storageValue !== null) {
+            setState(JSON.parse(storageValue))
+        } else {
+            setState(null)
+        } 
     }, [])
 
     useEffect(() => {
-        localStorage.setItem(key, JSON.stringify(state))
+        if(state !== null) {
+            localStorage.setItem(key, JSON.stringify(state))
+        } else {
+            localStorage.removeItem(key)
+        }
     }, [key, state])
 
     return [state, setState]

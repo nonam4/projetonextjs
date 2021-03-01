@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const Container = styled.button`
     width: ${({ width }) => width};
     height: ${({ height }) => height};
+    min-height: ${({ height }) => height};
     margin: 8px;
     padding: 8px;
     color: ${({ theme }) => theme.colors.buttonTexts};

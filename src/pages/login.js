@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 
 import Content from '../components/Login'
 import TextField from '../components/Inputs/TextField'
+import Checkbox from '../components/Inputs/Checkbox'
 import Button from '../components/Inputs/Button'
 import Erros from '../components/Errors'
 import Load from '../components/Load'
@@ -15,6 +16,7 @@ function Login(props) {
     const { colors } = useContext(ThemeContext)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [temporary, setTemporary] = useState(true) //tempary login or should persist?
     const [error, setError] = useState(false)
     const [showError, setShowError] = useState(false)
     const [load, setLoad] = useState(true)
@@ -29,7 +31,7 @@ function Login(props) {
         if(checkForm()) {
             //não precisa verificar o código da request, se o código da resposta for diferente de 200, será considerado erro
             axios.post('/api/login', { username, password }).then(res => {
-                props.setUser({...res.data, password})
+                props.setUser({...res.data, password, temporary})
             }).catch(err => {
                 showErrors('Usuário ou senha incorretos!') 
             })
@@ -79,6 +81,7 @@ function Login(props) {
             <Content>
                 <TextField onChange={(e) => setUsername(e.target.value)} value={username} placeholder={'Usuário'} icon={'list-user'} />
                 <TextField onChange={(e) => setPassword(e.target.value)} value={password} placeholder={'Senha'} icon={'chave'} type={'password'} />
+                <Checkbox text={'Ficar conectado'} changeReturn={ () => setTemporary(!temporary) } />
                 <Button text={'Entrar'} onClick={ handleLogin } />
             </Content>
             {showError && <Erros close={ hideErrors } error={error} />}
@@ -88,7 +91,3 @@ function Login(props) {
 }
 
 export default Login
-
-//import Checkbox from '../components/Inputs/Checkbox'
-//const [stay, setStay] = useState(false) //stay logged
-//<Checkbox text={'Ficar conectado'} changeReturn={ () => setStay(!stay) } />

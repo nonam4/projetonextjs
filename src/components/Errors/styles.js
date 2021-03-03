@@ -13,7 +13,6 @@ export const Container = styled.div`
     position: absolute;
     bottom: ${({ bottom }) => bottom};
     left: calc(50% - 150px);
-    transition: all ease 0.15s;
 `
 export const Close = styled.div`
     width: 20px;

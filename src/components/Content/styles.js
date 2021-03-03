@@ -4,7 +4,6 @@ export const Container = styled.div`
     width: 100%;
     height: 100%;
     margin-left: ${({ expanded, desktop }) => desktop? '0px' : expanded? '-250px' : '0px'};
-    transition: all ease 0.15s;
 `
 export const Header = styled.div`
     width: 100%;
@@ -48,7 +47,6 @@ export const Photo = styled.img`
     border-radius: 50%;
 `
 export const Settings = styled.div`
-    transition: all ease 0.15s;
     opacity: 0;
     z-index: -1;
     display: flex;

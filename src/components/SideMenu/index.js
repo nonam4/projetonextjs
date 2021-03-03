@@ -16,7 +16,7 @@ function SideMenu({ expanded, setExpanded, desktop }) {
                 <MenuItem> <MenuIcon name={'estoque'} /> Suprimentos </MenuItem>
             </MenuSection>
             <MenuSection>
-                <MenuTitle>PESSOAS</MenuTitle>
+                <MenuTitle>CLIENTES/FORNECEDORES</MenuTitle>
                 <MenuItem> <MenuIcon name={'list-user'} /> Listar </MenuItem>
                 <MenuItem> <MenuIcon name={'add-user'} /> Cadastrar </MenuItem>
             </MenuSection>

@@ -13,7 +13,6 @@ export const Container = styled.div`
     position: relative;
     border-right: solid 1px ${({ theme }) => theme.colors.borders};
     align-items: center;
-    transition: all ease 0.15s;
     padding-top: 60px;
 `
 export const Footer = styled.div`
@@ -39,7 +38,6 @@ export const Texts = styled.div`
 export const Text = styled.div`
     font-size: 12px;
     cursor: pointer;
-    transition: all ease 0.15s;
     padding: 0.2rem 0.5rem;
     margin-bottom: 1px;
     border-bottom: solid 1px transparent;

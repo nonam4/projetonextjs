@@ -36,14 +36,12 @@ export const Content = styled.div`
     pointer-events: none;
 `
 export const Label = styled.label`
-    transition: all ease 0.15s;
     position: absolute;
     top: 15px;
     left: 45px;
 `
 export const Highlight = styled.span`
     width: 0px;
-    transition: all ease 0.15s;
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -53,6 +51,7 @@ export const Viewer = styled.div`
     cursor: pointer;
     position: absolute;
     height: 20px;
+    width: 20px;
     top: 15px;
     right: 0;
     :hover path {

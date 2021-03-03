@@ -30,6 +30,7 @@ export const Container = styled.div`
     background: ${({ theme }) => theme.colors.background};
     position: absolute;
     opacity: ${({ opacity }) => opacity};
+    transition: all ease 0.5s;
 `
 export const Logo = styled.img`
     width: 250px;

@@ -33,6 +33,7 @@ function Index(props) {
     }, [props.user])
 
     function logout() {
+        setLoad(true)
         props.setUser(null)
     }
 

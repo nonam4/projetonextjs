@@ -31,7 +31,7 @@ function TextField(props) {
                 <Label> {props.placeholder? props.placeholder : settings.placeholder} </Label>
                 <Highlight />
             </Content>
-            {props.type === 'password' && <Viewer onClick={() => setShown(!shown)}> <Icon size={20} name={shown? 'hide': 'show'} /> </Viewer>}
+            {props.type === 'password' && <Viewer onClick={() => setShown(!shown)}> <Icon size={20} name={shown? 'senha_esconder': 'senha_mostrar'} /> </Viewer>}
         </Container>
     )
 }

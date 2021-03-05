@@ -7,6 +7,7 @@ import axios from 'axios'
 import Content from '../components/Content'
 import SideMenu from '../components/SideMenu'
 import Load from '../components/Load'
+import Impressoes from '../components/Impressoes'
 
 function Index(props) {
     const router = useRouter()
@@ -29,6 +30,10 @@ function Index(props) {
     }, [])
 
     useEffect(() => {
+        desktop && !expanded && setExpanded(true)
+    }, [desktop])
+
+    useEffect(() => {
         !props.user? router.push('/login') : setLoad(false)
     }, [props.user])
 
@@ -44,74 +49,14 @@ function Index(props) {
                 <link rel="icon" href="/icon.png" />
                 <meta name='theme-color' content={colors.background}></meta>
             </Head>
-            {props.user && <Content { ...props} expanded={expanded} desktop={desktop} logout={logout}>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                <br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                <br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                <br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                <br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
-                Em desenvolvimento...<br/>
+            {props.user && 
+            <Content { ...props} expanded={expanded} desktop={desktop} logout={logout}>
                 
+                <Impressoes />
+                <Impressoes />
+                <Impressoes />
+                <Impressoes />
+                <Impressoes />
             </Content>}
             <SideMenu expanded={expanded} setExpanded={setExpanded} desktop={desktop}/>
             <Load show={load}/>

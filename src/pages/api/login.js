@@ -11,6 +11,7 @@ export default async (req, res) => {
             // Compara a senha em string com o Hash armazenado
             if(bcrypt.compareSync(password, doc.data().hash)) {
                 usuario = { id: doc.id, ...doc.data() }
+                delete usuario.hash
             }
         })
         // Checa se o usuário é valido

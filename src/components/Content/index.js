@@ -11,8 +11,8 @@ function Content(props) {
                         {props.user.nome}
                     </Avatar>
                     <Settings>
-                        <SettingsItem> <Icon name={'list-user'} /> Perfil </SettingsItem>
-                        <SettingsItem onClick={props.toggleTheme}> <Icon name={'theme'} /> Tema Claro / Escuro </SettingsItem>
+                        <SettingsItem> <Icon name={'usuario_editar'} /> Perfil </SettingsItem>
+                        <SettingsItem onClick={props.toggleTheme}> <Icon name={'tema'} /> Tema Claro / Escuro </SettingsItem>
                         <SettingsItem onClick={props.logout}> <Icon name={'logout'} /> Logout </SettingsItem>
                     </Settings>
                 </User>

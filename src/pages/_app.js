@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from '../styles/global'
 import usePersistedState from '../utils/usePersistedState'

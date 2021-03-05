@@ -11,7 +11,7 @@ export default {
         buttonTexts: '#f2f4f8',
         borders: '#2b2b2b',
         floating: '#6a6e75',
-        azul: '#2957a4',
+        azul: '#0070f3',
         vermelho: '#990000',
     }
   }

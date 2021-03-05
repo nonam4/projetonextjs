@@ -5,7 +5,7 @@ export default async (req, res) => {
     await database.collection('/clients/').get().then(col => {
         let clients = {}
         col.forEach(doc => {
-            clients[doc.id] = doc.data()
+            clients[doc.id] = {...doc.data(), id: doc.id}
         })
         //define que os dados ficarão em cache por no minimo 60 segundos, depois revalida tudo novamente
         res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidade')

@@ -91,7 +91,12 @@ export const SettingsItem = styled.div`
 `
 export const View = styled.div`
     width: 100%;
-    height: calc(100% - 60px);
+    height: fit-content;
+    max-height: calc(100% - 60px);
     overflow: hidden;
     overflow-y: auto;
+    padding: 0.8rem 0 0 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
 `

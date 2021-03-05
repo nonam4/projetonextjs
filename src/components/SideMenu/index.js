@@ -8,23 +8,23 @@ import { Container, Footer, Logo, Texts, Text, MenuSection, MenuTitle, MenuItem}
 function SideMenu({ expanded, setExpanded, desktop }) {
     return (
         <Container expanded={expanded} desktop={desktop}>
-            <UnderlineIcon onClick={() => setExpanded(!expanded)} expanded={expanded} title={'Expandir/Recolher'} name={expanded? 'colapse' : 'expand'}/>
+            {!desktop && <UnderlineIcon onClick={() => setExpanded(!expanded)} expanded={expanded} title={'Expandir/Recolher'} name={expanded? 'arrow_lft' : 'arrow_rgt'}/> }
 
             <MenuSection>
                 <MenuTitle>GERAL</MenuTitle>
                 <MenuItem> <MenuIcon name={'dashboard'} /> Dashboard </MenuItem>
-                <MenuItem> <MenuIcon name={'estoque'} /> Suprimentos </MenuItem>
+                <MenuItem> <MenuIcon name={'suprimentos_listar'} /> Suprimentos </MenuItem>
             </MenuSection>
             <MenuSection>
                 <MenuTitle>CLIENTES/FORNECEDORES</MenuTitle>
-                <MenuItem> <MenuIcon name={'list-user'} /> Listar </MenuItem>
-                <MenuItem> <MenuIcon name={'add-user'} /> Cadastrar </MenuItem>
+                <MenuItem> <MenuIcon name={'usuario_listar'} /> Listar </MenuItem>
+                <MenuItem> <MenuIcon name={'usuario_adicionar'} /> Cadastrar </MenuItem>
             </MenuSection>
             <MenuSection>
                 <MenuTitle>LOCAÇÃO</MenuTitle>
-                <MenuItem> <MenuIcon name={'sem-impressora'} /> Listar Impressoras </MenuItem>
-                <MenuItem> <MenuIcon name={'listar-atendimento'} /> Listar Atendimentos </MenuItem>
-                <MenuItem> <MenuIcon name={'novo-atendimento'} /> Novo Atendimento </MenuItem>
+                <MenuItem> <MenuIcon name={'status_nenhuma'} /> Listar Impressoras </MenuItem>
+                <MenuItem> <MenuIcon name={'atendimento_listar'} /> Listar Atendimentos </MenuItem>
+                <MenuItem> <MenuIcon name={'atendimento_adicionar'} /> Novo Atendimento </MenuItem>
             </MenuSection>
 
             <Footer>

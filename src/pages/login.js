@@ -9,7 +9,6 @@ import TextField from '../components/Inputs/TextField'
 import Checkbox from '../components/Inputs/Checkbox'
 import Button from '../components/Inputs/Button'
 import Erros from '../components/Errors'
-import Load from '../components/Load'
 
 function Login(props) {
     const router = useRouter()
@@ -19,15 +18,14 @@ function Login(props) {
     const [temporary, setTemporary] = useState(true) //tempary login or should persist?
     const [error, setError] = useState(false)
     const [showError, setShowError] = useState(false)
-    const [load, setLoad] = useState(true)
 
     //se o usuário estiver salvo no localStorage já fará o login imediatamente
     useEffect(() => {
-        props.user? router.push('/') : setLoad(false)
+        props.user? router.push('/') : props.setLoad(false)
     }, [props.user])
 
     function handleLogin() {
-        setLoad(true)
+        props.setLoad(true)
         if(checkForm()) {
             //não precisa verificar o código da request, se o código da resposta for diferente de 200, será considerado erro
             axios.post('/api/login', { username, password }).then(res => {
@@ -53,7 +51,7 @@ function Login(props) {
     }
 
     function showErrors(msg) {
-        setLoad(false)
+        props.setLoad(false)
         setShowError(true)
         setTimeout(() => {
             setError(msg)
@@ -85,7 +83,6 @@ function Login(props) {
                 <Button text={'Entrar'} onClick={ handleLogin } />
             </Content>
             {showError && <Erros close={ hideErrors } error={error} />}
-            <Load show={load}/>
         </>
     )
 }

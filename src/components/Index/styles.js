@@ -14,9 +14,8 @@ export const Header = styled.div`
     flex-direction: row-reverse;
     padding: 0 1rem 0 0;
     border-bottom: solid 1px ${({ theme }) => theme.colors.borders};
-    justify-content: space-between;
 `
-export const User = styled.div`
+export const Dropdown = styled.div`
     height: 60px;
     display: flex;
     align-items: center;
@@ -35,11 +34,12 @@ export const User = styled.div`
         }
     }
 `
-export const Avatar = styled.span`
+export const DropdownItem = styled.span`
     border-bottom: solid 2px transparent;
     display: flex;
     align-items: center;
     padding: 0.5rem;
+    height: 53px;
 `
 export const Photo = styled.img`
     width: 35px;
@@ -63,7 +63,7 @@ export const Settings = styled.div`
     ::before {
         content: "";
         position: absolute;
-        right: 10px;
+        right: 12px;
         top: -10px;
         margin-left: 10px;
         width: 0px;
@@ -88,6 +88,26 @@ export const SettingsItem = styled.div`
             fill: ${({ theme }) => theme.colors.hover};
         }
     }
+`
+export const FilterOption = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem 0.5rem;
+    cursor: default;
+    :hover {
+        background: ${({ theme }) => theme.colors.highlight};
+        border-left: solid 5px ${({ theme }) => theme.colors.hover};
+        select {
+            border-bottom: solid 2px ${({ theme }) => theme.colors.hover};
+        }
+    }
+`
+export const FilterItem = styled.div`
+    width: 100%;
+    display: flex;
+    line-height: 40px;
+    align-items: center;
 `
 export const View = styled.div`
     width: 100%;

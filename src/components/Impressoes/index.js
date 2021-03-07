@@ -8,33 +8,35 @@ function Impressoes(props) {
     const { colors } = useContext(ThemeContext)
     const [hoverColor, setHoverColor] = useState(colors.azul)
 
+    const client = props.client
+
     return (
         <Container hoverColor={hoverColor}>
             <Header>
                 <NomeContainer>
-                    <Nome>Mundo Eletrônico</Nome>
-                    <Subnome>Mundo Eletrônico Locadora de Equipamentos EIRELI</Subnome>
+                    <Nome>{client.nomefantasia}</Nome>
+                    <Subnome>{client.razaosocial}</Subnome>
                 </NomeContainer>
                 <IconContainer> <Icon color={colors.azul}/> </IconContainer>
             </Header>
             <Line>
                 <LineItem>
                     <LineTitle>Impresso</LineTitle>
-                    <LineText>000000 págs</LineText>
+                    <LineText>{client.impresso} págs</LineText>
                 </LineItem>
                 <LineItem>
                     <LineTitle>Excedentes</LineTitle>
-                    <LineText>000000 págs</LineText>
+                    <LineText>{client.excedentes} págs</LineText>
                 </LineItem>
             </Line>
             <Line>
                 <LineItem>
                     <LineTitle>Impressoras</LineTitle>
-                    <LineSubtext>99</LineSubtext>
+                    <LineSubtext>{Object.entries(client.impressoras).length}</LineSubtext>
                 </LineItem>
                 <LineItem>
                     <LineTitle>Versão</LineTitle>
-                    <LineSubtext>0.1.0</LineSubtext>
+                    <LineSubtext>{client.sistema.versao}</LineSubtext>
                 </LineItem>
             </Line>
         </Container>

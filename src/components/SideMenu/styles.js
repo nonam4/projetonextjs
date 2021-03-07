@@ -17,8 +17,6 @@ export const Container = styled.div`
 `
 export const Footer = styled.div`
     width: 100%;
-    position: absolute;
-    bottom: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,6 +43,21 @@ export const Text = styled.div`
     :hover{
         border-bottom: solid 1px ${({ theme }) => theme.colors.hover};
         color: ${({ theme }) => theme.colors.hover};
+    }
+`
+export const Actions = styled.div`
+    width: 100%;
+    overflow-y: auto;
+    height: 100%;
+    padding-bottom: 40px;
+    ::-webkit-scrollbar {
+        width: 8px;
+        background: transparent;
+        padding-right: 2px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: ${({ theme }) => theme.colors.floating};
+        border-radius: 4px;
     }
 `
 export const MenuSection = styled.div`

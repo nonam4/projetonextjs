@@ -15,7 +15,7 @@ function Login(props) {
     const { colors } = useContext(ThemeContext)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [temporary, setTemporary] = useState(true) //tempary login or should persist?
+    const [temporary, setTemporary] = useState(true) //login temporário ou definitivo?
     const [error, setError] = useState(false)
     const [showError, setShowError] = useState(false)
 

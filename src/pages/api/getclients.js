@@ -3,6 +3,7 @@ import database from './_database.js'
 export default async (req, res) => {
 
     let data = '2021.02'
+    console.log(req.query)
 
     let clientes = {}
     let dados = await database.collection('/clients/').get()

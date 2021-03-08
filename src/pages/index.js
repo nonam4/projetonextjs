@@ -30,13 +30,13 @@ function getDatas() {
 function Index(props) {
     const router = useRouter()
     const { colors } = useContext(ThemeContext)
-    const [expanded, setExpanded] = useState(false)
-    const [desktop, setDesktop] = useState(false)
+    const [expanded, setExpanded] = useState(false) //define se o menu lateral esta aberto ou fechado
+    const [desktop, setDesktop] = useState(false) //verifica se o sistema está numa largura grande o suficiente pro menu lateral ficar sempre aberto
     //variaveis de buscas do database
     const [filters, setFilters] = useState({listando: 'todos', data: getDatas()[0].value}) //define um filtro base com a primeira data que o sistema conseguir
-    const [clients, setClients] = useState({})
+    const [clients, setClients] = useState({}) //clientes do DB
 
-
+    //monitora redimensionamentos da tela
     useEffect(() => {
         function handleResize() {
             let condition = window.innerWidth > 760
@@ -54,12 +54,13 @@ function Index(props) {
         desktop && !expanded && setExpanded(true)
     }, [desktop])
 
+    //se o usário for inválido, jogará pra janela de login
     useEffect(() => {
         !props.user && router.push('/login')
     }, [props.user])
 
+    //quando os filtros forem alterados irá fazer um novo pedido dos dados no DB
     useEffect(() => {
-        console.log('called')
         props.user && getDatabaseData()
     }, [filters])
 
@@ -72,10 +73,20 @@ function Index(props) {
         props.setLoad(true)
         let {username, password} = props.user
 
-        let res = await axios.post('/api/getclients', { username, password, filters })
-        setClients(res.data)
+        //reconferir os dados de autenticação salvos
+        axios.post('/api/login', { username, password }).then(async res => {
+            //atualiza o usuario localmente
+            props.setUser({...res.data, password, temporary: props.user.temporary})
 
-        props.setLoad(false)
+            //começa a buscar os dados no DB
+            let dbClients = await axios.get('/api/getclients', {params: { filters }})
+            setClients(dbClients.data)
+
+            //por fim esconde o load
+            props.setLoad(false)
+        }).catch(err => {
+            logout()
+        })
     }
 
     return(

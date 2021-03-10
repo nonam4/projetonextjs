@@ -13,7 +13,7 @@ function TextField(props) {
         maxLenght: 23,
     }
     const [shown, setShown] = useState(false)
-    const [type, setType] = useState(props.type? props.type : settings.type)
+    const [type, setType] = useState(props.type || settings.type)
 
     function handleType() {
         props.type === 'password'? shown? setType('text') : setType('password') : setType('text')
@@ -24,11 +24,11 @@ function TextField(props) {
     }, [shown])
 
     return (
-        <Container width={props.width? props.width : settings.width} height={props.height? props.height : settings.height}>
-            <Input type={type} onChange={props.onChange} value={props.value} maxLength={props.maxLenght? props.maxLenght : settings.maxLenght} required/>
+        <Container width={props.width || settings.width} height={props.height || settings.height}>
+            <Input type={type} onChange={props.onChange} value={props.value} maxLength={props.maxLenght || settings.maxLenght} required/>
             <Content> 
-                <Icon name={props.icon? props.icon : settings.icon} /> 
-                <Label> {props.placeholder? props.placeholder : settings.placeholder} </Label>
+                <Icon name={props.icon || settings.icon} /> 
+                <Label> {props.placeholder || settings.placeholder} </Label>
                 <Highlight />
             </Content>
             {props.type === 'password' && <Viewer onClick={() => setShown(!shown)}> <Icon size={20} name={shown? 'senha_esconder': 'senha_mostrar'} /> </Viewer>}

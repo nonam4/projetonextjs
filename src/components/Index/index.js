@@ -2,6 +2,8 @@ import Icon from '../Icons/MenuIcon'
 import Select from '../Inputs/Select'
 import { Container, Header, Dropdown, DropdownItem, Photo, Settings, SettingsItem, FilterOption, FilterItem, View } from './styles'
 
+import TextField from '../Inputs/TextField'
+
 function Index(props) {
     const listagens = [{
         value: 'todos',
@@ -33,11 +35,9 @@ function Index(props) {
                     <Settings>
                         <SettingsItem> <Icon name={'usuario_editar'} /> Perfil </SettingsItem>
                         <SettingsItem onClick={props.toggleTheme}> <Icon name={'tema'} /> Tema Claro / Escuro </SettingsItem>
-                        <SettingsItem onClick={props.logout}> <Icon name={'logout'} /> Logout </SettingsItem>
+                        <SettingsItem onClick={props.handleLogout}> <Icon name={'logout'} /> Logout </SettingsItem>
                     </Settings>
                 </Dropdown>
-
-
                 <Dropdown>
                     <DropdownItem>
                         <Icon name={'filtros'} margin={'0'} />
@@ -59,7 +59,7 @@ function Index(props) {
                     </Settings>
                 </Dropdown>
 
-
+                <TextField onChange={(e) => props.setBusca(e.target.value)} value={props.busca} placeholder={'Buscar...'} icon={'buscar'} height={'52px'}/>
             </Header>
             <View>
                 {props.children}

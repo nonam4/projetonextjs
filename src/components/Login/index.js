@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Container, Logo} from './styles'
 
 function Login({ children }) {

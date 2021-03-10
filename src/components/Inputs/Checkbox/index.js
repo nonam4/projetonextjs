@@ -15,9 +15,9 @@ function Checkbox(props) {
     }
 
     return (
-        <Container width={props.width? props.width : settings.width} height={props.height? props.height : settings.height} >
+        <Container width={props.width || settings.width} height={props.height || settings.height} >
             <Input checked={checked} onChange={handleChecked}/>
-            <Label  onClick={handleChecked}> {props.text? props.text : settings.text} </Label>
+            <Label  onClick={handleChecked}> {props.text || settings.text} </Label>
         </Container>
     )
 }

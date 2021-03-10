@@ -14,7 +14,7 @@ function getDatas() {
     let ano = data.getFullYear()
     let mes = data.getMonth() + 1
 
-    for(var x = 0; x < 4; x++){
+    for(var x = 0; x < 4; x++) {
         datas.push({value: ano + '.' + (mes < 10? `0${mes}` : mes), label: (mes < 10? `0${mes}` : mes) + '/' + ano})
 
         if(mes <= 1){
@@ -32,6 +32,7 @@ function Index(props) {
     const { colors } = useContext(ThemeContext)
     const [expanded, setExpanded] = useState(false) //define se o menu lateral esta aberto ou fechado
     const [desktop, setDesktop] = useState(false) //verifica se o sistema está numa largura grande o suficiente pro menu lateral ficar sempre aberto
+    const [busca, setBusca] = useState('')
     //variaveis de buscas do database
     const [filters, setFilters] = useState({listando: 'todos', data: getDatas()[0].value}) //define um filtro base com a primeira data que o sistema conseguir
     const [clients, setClients] = useState({}) //clientes do DB
@@ -64,7 +65,7 @@ function Index(props) {
         props.user && getDatabaseData()
     }, [filters])
 
-    function logout() {
+    function handleLogout() {
         props.setLoad(true)
         props.setUser(null)
     }
@@ -85,7 +86,7 @@ function Index(props) {
             //por fim esconde o load
             props.setLoad(false)
         }).catch(err => {
-            logout()
+            //handleLogout()
         })
     }
 
@@ -97,9 +98,10 @@ function Index(props) {
                 <meta name='theme-color' content={colors.background}></meta>
             </Head>
             {props.user && 
-            <Content { ...props} expanded={expanded} desktop={desktop} logout={logout} getDatas={getDatas} filters={filters} setFilters={setFilters}>
+            <Content { ...props} expanded={expanded} desktop={desktop} handleLogout={handleLogout} getDatas={getDatas} 
+                filters={filters} setFilters={setFilters} busca={busca} setBusca={setBusca}>
 
-                { Object.keys(clients).map(id => <Impressoes key={id} client={clients[id]}/>) }
+                { Object.keys(clients).map(id => <Impressoes key={id} client={clients[id]} filters={filters} />) }
             </Content>}
             <SideMenu expanded={expanded} setExpanded={setExpanded} desktop={desktop}/>
         </>

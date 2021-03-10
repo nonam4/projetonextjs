@@ -35,8 +35,8 @@ function UnderlineIcon(props) {
 
     return (
         <Svg onClick={props.onClick} {...props} title={props.title}
-            viewBox="0 0 200 200" height={props.size? props.size : settings.size} width={props.size? props.size : settings.size} >
-            <path fill={props.color? props.color : settings.color} d={icons[props.name? props.name : settings.name]}/>
+            viewBox="0 0 200 200" height={props.size || settings.size} width={props.size || settings.size} >
+            <path fill={props.color || settings.color} d={icons[props.name || settings.name]}/>
             {props.title && <title>{props.title}</title>}
         </Svg>
     )

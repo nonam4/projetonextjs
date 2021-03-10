@@ -7,7 +7,7 @@ function Select(props) {
 
     return (
         <Container onChange={props.onChange}> 
-            {props.options? props.options.map(option => <Option key={option.value} value={option.value}>{option.label}</Option>) : settings.options}
+            {props.options.map(option => <Option key={option.value} value={option.value}>{option.label}</Option>) || settings.options}
         </Container>
     )
 }

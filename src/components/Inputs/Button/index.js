@@ -13,10 +13,8 @@ function Button(props) {
     }
 
     return (
-        <Container background={props.background? props.background : settings.background} 
-            width={props.width? props.width : settings.width} height={props.height? props.height : settings.height} 
-            onClick={props.onClick}>
-                {props.text? props.text : settings.text}
+        <Container background={props.background || settings.background} width={props.width || settings.width} height={props.height || settings.height} onClick={props.onClick}>
+            {props.text || settings.text}
         </Container>
     )
 }

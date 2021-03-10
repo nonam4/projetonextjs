@@ -22,9 +22,10 @@ function UnderlineIcon(props) {
     }
 
     return (
-        <Svg viewBox="0 0 200 200" height={props.size? props.size : settings.size} width={props.size? props.size : settings.size} 
-            margin={props.margin? props.margin : settings.margin}  onClick={props.onClick}>
-            <path fill={props.color? props.color : settings.color} d={icons[props.name? props.name : settings.name]}/>
+        <Svg viewBox="0 0 200 200" height={props.size || settings.size} width={props.size || settings.size} 
+            margin={props.margin || settings.margin}  onClick={props.onClick}>
+            <path fill={props.color || settings.color} d={icons[props.name || settings.name]}/>
+            {props.title && <title>{props.title}</title>}
         </Svg>
     )
 }

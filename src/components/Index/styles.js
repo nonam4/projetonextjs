@@ -32,6 +32,9 @@ export const Dropdown = styled.div`
             border-bottom: solid 2px ${({ theme }) => theme.colors.hover};
             color: ${({ theme }) => theme.colors.hover};
         }
+        span path {
+            fill: ${({ theme }) => theme.colors.hover};
+        }
     }
 `
 export const DropdownItem = styled.span`
@@ -39,6 +42,7 @@ export const DropdownItem = styled.span`
     display: flex;
     align-items: center;
     padding: 0.5rem;
+    margin: 0 0 0 0.5rem;
     height: 53px;
 `
 export const Photo = styled.img`
@@ -80,7 +84,7 @@ export const SettingsItem = styled.div`
     align-items: center;
     cursor: pointer;
     line-height: 40px;
-    padding: 0 1rem;
+    padding: 0 1rem 0 1.5rem;
     :hover {
         border-left: solid 5px ${({ theme }) => theme.colors.hover};
         background: ${({ theme }) => theme.colors.highlight};
@@ -98,8 +102,12 @@ export const FilterOption = styled.div`
     :hover {
         background: ${({ theme }) => theme.colors.highlight};
         border-left: solid 5px ${({ theme }) => theme.colors.hover};
-        select {
-            border-bottom: solid 2px ${({ theme }) => theme.colors.hover};
+        svg path{
+            fill: ${({ theme }) => theme.colors.hover};
+        }
+        span {
+            left: 0;
+            width: 100%;
         }
     }
 `
@@ -108,6 +116,7 @@ export const FilterItem = styled.div`
     display: flex;
     line-height: 40px;
     align-items: center;
+    padding-left: 0.5rem;
 `
 export const View = styled.div`
     width: 100%;

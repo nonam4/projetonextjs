@@ -27,18 +27,52 @@ function getDatas() {
     return datas
 }
 
+function filtrarClientesPorBusca(clientes, filtro) {
+
+    function limparString(str) {
+        return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    }
+
+    function compararString(compare, str) {
+        if(compare.indexOf(str) > -1) return true
+        return false
+    }
+
+    const busca = limparString(filtro)
+    let volta = {}
+
+    for(let id in clientes) {
+        
+        let cliente = clientes[id]
+        let match = false
+
+        if(compararString(limparString(cliente.nomefantasia), busca)
+        || compararString(limparString(cliente.razaosocial), busca)) match = true
+
+        for(let serial in cliente.impressoras) {
+            if(compararString(limparString(serial), busca)) match = true
+        }
+
+        if(match) volta[cliente.id] = cliente
+    }
+    return volta
+}
+
 function Index(props) {
     const router = useRouter()
     const { colors } = useContext(ThemeContext)
+    const [buscasLiberadas, setBuscasLiberadas] = useState(false)
     const [expanded, setExpanded] = useState(false) //define se o menu lateral esta aberto ou fechado
     const [desktop, setDesktop] = useState(false) //verifica se o sistema está numa largura grande o suficiente pro menu lateral ficar sempre aberto
     const [busca, setBusca] = useState('')
     //variaveis de buscas do database
     const [filters, setFilters] = useState({listando: 'todos', data: getDatas()[0].value}) //define um filtro base com a primeira data que o sistema conseguir
-    const [clients, setClients] = useState({}) //clientes do DB
+    const [clients, setClients] = useState({}) //clientes recebidos do servidor
+    const [clientsFiltrados, setClientsFiltrados] = useState({}) //clientes locais filtrados pelo campo de busca
 
     //monitora redimensionamentos da tela
     useEffect(() => {
+        if(props.user) getDatabaseData()
         function handleResize() {
             let condition = window.innerWidth > 760
             setDesktop(condition)
@@ -57,13 +91,20 @@ function Index(props) {
 
     //se o usário for inválido, jogará pra janela de login
     useEffect(() => {
-        !props.user && router.push('/login')
+        if(!props.user) { router.push('/login') }
     }, [props.user])
 
     //quando os filtros forem alterados irá fazer um novo pedido dos dados no DB
     useEffect(() => {
-        props.user && getDatabaseData()
+        if(buscasLiberadas) getDatabaseData()
     }, [filters])
+
+    //quando for alterado o campo de busca, o sistema mostrará os dados correspondentes
+    //se a busca for valida, irá filtrar localmente os dados
+    //se limpar a busca, irá buscar novamente os dados no servidor
+    useEffect(() => {
+        if(busca !== '') { setClientsFiltrados(filtrarClientesPorBusca(clients, busca)) }
+    }, [busca])
 
     function handleLogout() {
         props.setLoad(true)
@@ -79,14 +120,16 @@ function Index(props) {
             //atualiza o usuario localmente
             props.setUser({...res.data, password, temporary: props.user.temporary})
 
-            //começa a buscar os dados no DB
+            //começa a buscar os dados no servidor
             let dbClients = await axios.get('/api/getclients', {params: { filters }})
             setClients(dbClients.data)
 
-            //por fim esconde o load
+            //por fim esconde o load e confere se as buscas estão liberadas
             props.setLoad(false)
+            if(!buscasLiberadas) setBuscasLiberadas(true)
         }).catch(err => {
-            //handleLogout()
+            console.error(err)
+            handleLogout()
         })
     }
 
@@ -101,7 +144,7 @@ function Index(props) {
             <Content { ...props} expanded={expanded} desktop={desktop} handleLogout={handleLogout} getDatas={getDatas} 
                 filters={filters} setFilters={setFilters} busca={busca} setBusca={setBusca}>
 
-                { Object.keys(clients).map(id => <Impressoes key={id} client={clients[id]} filters={filters} />) }
+                { Object.keys(busca == ''? clients : clientsFiltrados).map(id => <Impressoes key={id} client={clients[id]} filters={filters} />) }
             </Content>}
             <SideMenu expanded={expanded} setExpanded={setExpanded} desktop={desktop}/>
         </>

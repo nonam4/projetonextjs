@@ -27,3 +27,8 @@ tela de cadastrar cliente/fornecedor ter diferentes icones para diferentes tipos
 -cadastro de locação - icone de empresa
 -cadastro de ti - icone de pessoa
 -cadastro de fornecedor - icone de trabalhador
+
+substituição de impressoras
+-se a impressora A for trocada pela B -> impressora B recebe A no array 'substituindo'. Array 'substituindo' de impressora A será limpo
+-se a impressora B for trocada pela C -> impressora C recebe A e B no array 'substituindo'. Array 'substituindo' de impressora B será limpo
+-se a impressora C for trocada pela A -> impressora A recebe B e C no array 'substituindo'. Array 'substituindo' de impressora C será limpo

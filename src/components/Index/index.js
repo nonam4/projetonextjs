@@ -40,9 +40,12 @@ function Index(props) {
                 </Dropdown>
                 <Dropdown>
                     <DropdownItem>
-                        <Icon name={'filtros'} margin={'0'} />
+                        <Icon name={'filtros'} margin={'0'} title={'Filtros'}/>
                     </DropdownItem>
                     <Settings>
+                        <FilterOption>
+                            <TextField onChange={(e) => props.setBusca(e.target.value)} value={props.busca} placeholder={'Buscar...'} icon={'buscar'}/>
+                        </FilterOption>
                         <FilterOption> 
                             <FilterItem>
                                 <Icon name={'calendario'} /> Datas 
@@ -58,8 +61,6 @@ function Index(props) {
                         <SettingsItem> <Icon name={'relatorio'} /> Gerar Relatórios </SettingsItem>
                     </Settings>
                 </Dropdown>
-
-                <TextField onChange={(e) => props.setBusca(e.target.value)} value={props.busca} placeholder={'Buscar...'} icon={'buscar'} height={'52px'}/>
             </Header>
             <View>
                 {props.children}

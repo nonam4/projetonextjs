@@ -13,3 +13,8 @@ export const Logo = styled.img`
     width: 250px;
     margin-bottom: 50px;
 `
+export const TextFileds = styled.div`
+    width: ${({ width }) => width};
+    height: ${({ height }) => height};
+    margin: 0.5rem 1rem;
+`

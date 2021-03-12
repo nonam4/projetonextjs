@@ -4,7 +4,7 @@ import Head from 'next/head'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 
-import Content from '../components/Login'
+import Content, { TextContainer } from '../components/Login'
 import TextField from '../components/Inputs/TextField'
 import Checkbox from '../components/Inputs/Checkbox'
 import Button from '../components/Inputs/Button'
@@ -77,8 +77,12 @@ function Login(props) {
                 <meta name='theme-color' content={colors.background}></meta>
             </Head>
             <Content>
-                <TextField onChange={(e) => setUsername(e.target.value)} value={username} placeholder={'Usuário'} icon={'list-user'} />
-                <TextField onChange={(e) => setPassword(e.target.value)} value={password} placeholder={'Senha'} icon={'chave'} type={'password'} />
+                <TextContainer>
+                    <TextField onChange={(e) => setUsername(e.target.value)} value={username} placeholder={'Usuário'} icon={'usuario'} />
+                </TextContainer>
+                <TextContainer> 
+                    <TextField onChange={(e) => setPassword(e.target.value)} value={password} placeholder={'Senha'} icon={'coletor_chave'} type={'password'} />
+                </TextContainer>
                 <Checkbox text={'Ficar conectado'} changeReturn={ () => setTemporary(!temporary) } />
                 <Button text={'Entrar'} onClick={ handleLogin } />
             </Content>

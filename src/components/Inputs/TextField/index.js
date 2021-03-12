@@ -7,8 +7,6 @@ function TextField(props) {
     const settings = {
         type: 'text',
         placeholder: 'Digite aqui...',
-        width: '250px',
-        height: '50px',
         icon: 'undefined',
         maxLenght: 23,
     }
@@ -24,8 +22,8 @@ function TextField(props) {
     }, [shown])
 
     return (
-        <Container width={props.width || settings.width} height={props.height || settings.height}>
-            <Input type={type} onChange={props.onChange} value={props.value} maxLength={props.maxLenght || settings.maxLenght} required/>
+        <Container>
+            <Input type={type} onChange={props.onChange} value={props.value} maxLength={props.maxLenght || settings.maxLenght} placeholder={' '}/>
             <Content> 
                 <Icon name={props.icon || settings.icon} /> 
                 <Label> {props.placeholder || settings.placeholder} </Label>

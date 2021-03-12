@@ -20,7 +20,6 @@ function UnderlineIcon(props) {
         color: colors.texts,
         name: 'undefined'
     }
-
     return (
         <Svg viewBox="0 0 200 200" height={props.size || settings.size} width={props.size || settings.size} 
             margin={props.margin || settings.margin}  onClick={props.onClick}>

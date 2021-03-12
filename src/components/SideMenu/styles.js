@@ -1,5 +1,23 @@
 import styled from "styled-components"
 
+export const Expansor = styled.div`
+    width: 18px;
+    height: 18px;
+    padding: 0.5rem;
+    position: absolute;
+    right: ${({ expanded }) => expanded ? '12px' : '-46px'};
+    top: 13px;
+    cursor: pointer;
+    transition: all ease 0.05s;
+    box-sizing: content-box;
+    border-bottom: solid 2px transparent;
+    :hover {
+        path {
+            fill: ${({ theme }) => theme.colors.hover};
+        };
+        border-bottom: solid 2px ${({ theme }) => theme.colors.hover};
+    }
+`
 export const Container = styled.div`
     height: 100%;
     width: 250px;

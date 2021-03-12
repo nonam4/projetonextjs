@@ -1,9 +1,8 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-    width: ${({ width }) => width};
-    height: ${({ height }) => height};
-    margin: 8px;
+    width: 100%;
+    height: 100%;
     position: relative;
 `
 export const Input = styled.input`
@@ -15,7 +14,7 @@ export const Input = styled.input`
     border: none;
     border-bottom: solid 1px ${({ theme }) => theme.colors.borders};
     padding: 22px 39px 8px 44px;
-    :focus + div, :valid + div {
+    :focus + div, :not(:placeholder-shown) + div {
         label {
             color: ${({ theme }) => theme.colors.hover};
             font-size: 10px;
@@ -32,7 +31,7 @@ export const Content = styled.div`
     width: 100%;
     position: absolute;
     top: 0;
-    padding: 13px 8px;
+    padding: 13px 0.5rem;
     pointer-events: none;
 `
 export const Label = styled.label`

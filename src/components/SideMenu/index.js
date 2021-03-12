@@ -1,14 +1,16 @@
 import Link from 'next/link'
 import { version } from '../../../package.json'
 
-import UnderlineIcon from '../Icons/UnderlineIcon'
 import MenuIcon from '../Icons/MenuIcon'
-import { Container, Footer, Logo, Texts, Text, Actions, MenuSection, MenuTitle, MenuItem} from './styles'
+import { Expansor, Container, Footer, Logo, Texts, Text, Actions, MenuSection, MenuTitle, MenuItem} from './styles'
 
 function SideMenu({ expanded, setExpanded, desktop }) {
     return (
         <Container expanded={expanded} desktop={desktop}>
-            {!desktop && <UnderlineIcon onClick={() => setExpanded(!expanded)} expanded={expanded} title={'Expandir/Recolher'} name={expanded? 'arrow_lft' : 'arrow_rgt'}/> }
+            {!desktop && 
+                <Expansor expanded={expanded} onClick={() => setExpanded(!expanded)} >
+                    <MenuIcon size={'18'} margin={'0'} title={'Expandir/Recolher'} name={expanded? 'arrow_lft' : 'arrow_rgt'}/>
+                </Expansor>}
 
             <Actions>
                 <MenuSection>

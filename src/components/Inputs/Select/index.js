@@ -1,4 +1,4 @@
-import { Container, Option } from './styles'
+import { Container, Content, Option, Highlight } from './styles'
 
 function Select(props) {
     const settings = {
@@ -6,8 +6,11 @@ function Select(props) {
     }
 
     return (
-        <Container onChange={props.onChange}> 
-            {props.options.map(option => <Option key={option.value} value={option.value}>{option.label}</Option>) || settings.options}
+        <Container>
+            <Content onChange={props.onChange}> 
+                {props.options.map(option => <Option key={option.value} value={option.value}>{option.label}</Option>) || settings.options}
+            </Content>
+            <Highlight />
         </Container>
     )
 }

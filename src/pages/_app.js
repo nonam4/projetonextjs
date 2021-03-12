@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from '../styles/global'
 import usePersistedState from '../utils/usePersistedState'
@@ -16,6 +16,11 @@ function App({ Component, pageProps }) {
     function toggleTheme() {
         setTheme(theme.title === 'light' ? dark : light)
     }
+
+    useEffect(() => {
+        window.focus()
+        if (document.activeElement) document.activeElement.blur()
+    }, [load])
 
     return (
         <ThemeProvider theme={theme}>

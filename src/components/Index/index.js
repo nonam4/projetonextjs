@@ -35,7 +35,7 @@ function Index(props) {
                         <Photo src={props.user.photo}/>
                         {props.user.nome}
                     </DropdownItem>
-                    <Settings>
+                    <Settings right={'-3'}>
                         <SettingsItem> <Icon name={'usuario_editar'} /> Perfil </SettingsItem>
                         <SettingsItem onClick={props.toggleTheme}> <Icon name={'tema'} /> Tema Claro / Escuro </SettingsItem>
                         <SettingsItem onClick={props.handleLogout}> <Icon name={'logout'} /> Logout </SettingsItem>
@@ -46,7 +46,7 @@ function Index(props) {
                         {(JSON.stringify(props.filters) != JSON.stringify(props.filterDefaults) || props.busca != '') && <FilterIndicator />}
                         <Icon name={'filtros'} margin={'0'} title={'Filtros'}/>
                     </DropdownItem>
-                    <Settings>
+                    <Settings right={'-90'}>
                         <FilterOption>
                             <TextField onChange={(e) => props.setBusca(e.target.value)} value={props.busca} placeholder={'Buscar...'} icon={'buscar'}/>
                         </FilterOption>

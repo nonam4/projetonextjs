@@ -33,7 +33,7 @@ export const Container = styled.div`
     transition: all ease 0.5s;
 `
 export const Logo = styled.img`
-    width: 250px;
+    width: 15rem;
     margin-bottom: 50px;
 `
 export const Loader = styled.div`

@@ -16,6 +16,7 @@ export const Header = styled.div`
     border-bottom: solid 1px ${({ theme }) => theme.colors.borders};
 `
 export const Dropdown = styled.div`
+    max-width: 140px;
     height: 60px;
     display: flex;
     align-items: center;
@@ -32,6 +33,9 @@ export const Dropdown = styled.div`
             border-bottom: solid 2px ${({ theme }) => theme.colors.hover};
             color: ${({ theme }) => theme.colors.hover};
         }
+        span::after {
+            opacity: 1;
+        }
         span path {
             fill: ${({ theme }) => theme.colors.hover};
         }
@@ -44,9 +48,23 @@ export const DropdownItem = styled.span`
     padding: 0.5rem;
     margin: 0 0 0 0.5rem;
     height: 53px;
+    ::after {
+        opacity: 0;
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        left: 18px;
+        width: 0px;
+        height: 0px;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid ${({ theme }) => theme.colors.hover};
+        clear: both;
+    }
 `
 export const Photo = styled.img`
     width: 35px;
+    margin: -0.3rem;
     margin-right: 0.8rem;
     border-radius: 50%;
 `
@@ -63,20 +81,7 @@ export const Settings = styled.div`
     border-radius: 5px;
     position: absolute;
     top: 65px;
-    right: -3px;
-    ::before {
-        content: "";
-        position: absolute;
-        right: 12px;
-        top: -10px;
-        margin-left: 10px;
-        width: 0px;
-        height: 0px;
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-top: 10px solid ${({ theme }) => theme.colors.hover};
-        clear: both;
-    }
+    right: ${({ right }) => `${right}px`};
 `
 export const SettingsItem = styled.div`
     width: 100%;

@@ -25,7 +25,9 @@ export default createGlobalStyle`
         -webkit-tap-highlight-color: transparent;
     }
     html {
+        position: fixed;
         height: 100%;
+        width: 100vw;
     }
     body {
         width: 100%;
@@ -38,7 +40,7 @@ export default createGlobalStyle`
     #__next {
         height: 100%;
         width: 100%;
-        min-width: 360px;
+        min-width: 320px;
         display: flex;
         flex-direction: row-reverse;
         overflow: hidden;

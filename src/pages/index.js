@@ -66,7 +66,8 @@ function Index(props) {
     const [desktop, setDesktop] = useState(false) //verifica se o sistema está numa largura grande o suficiente pro menu lateral ficar sempre aberto
     const [busca, setBusca] = useState('')
     //variaveis de buscas do database
-    const [filters, setFilters] = useState({listando: 'todos', data: getDatas()[0].value}) //define um filtro base com a primeira data que o sistema conseguir
+    const filterDefaults = {listando: 'todos', data: getDatas()[0].value}
+    const [filters, setFilters] = useState(filterDefaults) //define um filtro base com a primeira data que o sistema conseguir
     const [clients, setClients] = useState({}) //clientes recebidos do servidor
     const [clientsFiltrados, setClientsFiltrados] = useState({}) //clientes locais filtrados pelo campo de busca
 
@@ -142,7 +143,7 @@ function Index(props) {
             </Head>
             {props.user && 
             <Content { ...props} expanded={expanded} desktop={desktop} handleLogout={handleLogout} getDatas={getDatas} 
-                filters={filters} setFilters={setFilters} busca={busca} setBusca={setBusca}>
+                filters={filters} setFilters={setFilters} busca={busca} setBusca={setBusca} filterDefaults={filterDefaults}>
 
                 { Object.keys(busca == ''? clients : clientsFiltrados).map(id => <Impressoes key={id} client={clients[id]} filters={filters} />) }
             </Content>}

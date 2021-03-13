@@ -1,6 +1,6 @@
 import Icon from '../Icons/MenuIcon'
 import Select from '../Inputs/Select'
-import { Container, Header, Dropdown, DropdownItem, Photo, Settings, SettingsItem, FilterOption, FilterItem, View } from './styles'
+import { Container, Header, Dropdown, DropdownItem, Photo, Settings, SettingsItem, FilterOption, FilterItem, View, FilterIndicator } from './styles'
 
 import TextField from '../Inputs/TextField'
 
@@ -12,8 +12,11 @@ function Index(props) {
         value: 'excedentes',
         label: 'Excedentes'
     },{
-        value: 'excluidas',
-        label: 'Excluidas'
+        value: 'atrasos',
+        label: 'Atrasos'
+    },{
+        value: 'abastecimentos',
+        label: 'Abastecimentos'
     },]
 
     function handleDataChange(e) {
@@ -40,6 +43,7 @@ function Index(props) {
                 </Dropdown>
                 <Dropdown>
                     <DropdownItem>
+                        {(JSON.stringify(props.filters) != JSON.stringify(props.filterDefaults) || props.busca != '') && <FilterIndicator />}
                         <Icon name={'filtros'} margin={'0'} title={'Filtros'}/>
                     </DropdownItem>
                     <Settings>

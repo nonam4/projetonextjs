@@ -18,10 +18,6 @@ function Impressoes(props) {
             setHoverColor(colors.vermelho) 
             setIconName('status_desinstalado')
             setIconTitle('Coletor não Instalado')
-        } else if(client.abastecimento) {
-            setHoverColor(colors.magenta)
-            setIconName('status_abastecimento')
-            setIconTitle('Abastecimento Necessário')
         } else if(client.atraso) {
             setHoverColor(colors.laranja)
             setIconName('status_atraso')
@@ -34,6 +30,10 @@ function Impressoes(props) {
             setHoverColor(colors.verde)
             setIconName('status_nenhuma')
             setIconTitle('Nenhuma Impressora')
+        } else if(client.abastecimento) {
+            setHoverColor(colors.magenta)
+            setIconName('status_abastecimento')
+            setIconTitle('Abastecimento Necessário')
         } else {
             setHoverColor(colors.azul)
             setIconName('status_ok')
@@ -63,7 +63,7 @@ function Impressoes(props) {
             <Line>
                 <LineItem>
                     <LineTitle>Impressoras</LineTitle>
-                    <LineSubtext>{Object.entries(client.impressoras).length}</LineSubtext>
+                    <LineSubtext>{client.impressorasAtivas}</LineSubtext>
                 </LineItem>
                 <LineItem>
                     <LineTitle>Versão</LineTitle>

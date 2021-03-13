@@ -129,3 +129,12 @@ export const View = styled.div`
     flex-wrap: wrap;
     align-items: flex-start;
 `
+export const FilterIndicator = styled.div`
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.colors.hover};
+    position: absolute;
+    top: 10px;
+    right: 0;
+`

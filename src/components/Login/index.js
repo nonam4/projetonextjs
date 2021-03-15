@@ -1,4 +1,3 @@
-import { Settings } from '../Index/styles'
 import { Container, Logo, TextFileds} from './styles'
 
 function Login({ children }) {

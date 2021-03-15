@@ -4,12 +4,12 @@ import { version } from '../../../package.json'
 import MenuIcon from '../Icons/MenuIcon'
 import { Expansor, Container, Footer, Logo, Texts, Text, Actions, MenuSection, MenuTitle, MenuItem} from './styles'
 
-function SideMenu({ expanded, setExpanded, desktop }) {
+function SideMenu(props) {
     return (
-        <Container expanded={expanded} desktop={desktop}>
-            {!desktop && 
-                <Expansor expanded={expanded} onClick={() => setExpanded(!expanded)} >
-                    <MenuIcon size={'18'} margin={'0'} title={'Expandir/Recolher'} name={expanded? 'arrow_lft' : 'arrow_rgt'}/>
+        <Container expanded={props.expanded} desktop={props.desktop}>
+            {!props.desktop && 
+                <Expansor expanded={props.expanded} onClick={() => props.setExpanded(!props.expanded)} >
+                    <MenuIcon size={'18'} margin={'0'} title={'Expandir/Recolher'} name={props.expanded? 'arrow_lft' : 'arrow_rgt'}/>
                 </Expansor>}
 
             <Actions>
@@ -25,8 +25,8 @@ function SideMenu({ expanded, setExpanded, desktop }) {
                 </MenuSection>
                 <MenuSection>
                     <MenuTitle>LOCAÇÃO</MenuTitle>
-                    <MenuItem> <MenuIcon name={'status_nenhuma'} /> Listar Impressoras </MenuItem>
-                    <MenuItem> <MenuIcon name={'atendimento_listar'} /> Listar Atendimentos </MenuItem>
+                    <MenuItem onClick={() => props.setListando('impressoras')}> <MenuIcon name={'status_nenhuma'} /> Listar Impressoras </MenuItem>
+                    <MenuItem onClick={() => props.setListando('atendimentos')}> <MenuIcon name={'atendimento_listar'} /> Listar Atendimentos </MenuItem>
                     <MenuItem> <MenuIcon name={'atendimento_adicionar'} /> Novo Atendimento </MenuItem>
                 </MenuSection>
             </Actions>

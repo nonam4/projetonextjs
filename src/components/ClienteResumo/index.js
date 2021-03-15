@@ -11,26 +11,26 @@ function Impressoes(props) {
     const [iconName, setIconName] = useState('status_ok')
     const [iconTitle, setIconTitle] = useState('Tudo Ok!')
 
-    const client = props.client
+    const cliente = props.cliente
 
     useEffect(() => {
-        if(client.sistema.versao === 'N/I') {
+        if(cliente.sistema.versao === 'N/I') {
             setHoverColor(colors.vermelho) 
             setIconName('status_desinstalado')
             setIconTitle('Coletor não Instalado')
-        } else if(client.atraso) {
+        } else if(cliente.atraso) {
             setHoverColor(colors.laranja)
             setIconName('status_atraso')
             setIconTitle('Atraso em Leituras')
-        } else if(client.sistema.versao != version) {
+        } else if(cliente.sistema.versao != version) {
             setHoverColor(colors.amarelo)
             setIconName('status_desatualizado')
             setIconTitle('Coletor Desatualizado')
-        } else if(Object.keys(client.impressoras).length == 0) {
+        } else if(Object.keys(cliente.impressoras).length == 0) {
             setHoverColor(colors.verde)
             setIconName('status_nenhuma')
             setIconTitle('Nenhuma Impressora')
-        } else if(client.abastecimento) {
+        } else if(cliente.abastecimento) {
             setHoverColor(colors.magenta)
             setIconName('status_abastecimento')
             setIconTitle('Abastecimento Necessário')
@@ -39,35 +39,35 @@ function Impressoes(props) {
             setIconName('status_ok')
             setIconTitle('Tudo Ok!')
         }
-    }, [props.client])
+    }, [props.cliente])
 
     return (
         <Container hoverColor={hoverColor}>
             <Header>
                 <NomeContainer>
-                    <Nome>{client.nomefantasia}</Nome>
-                    <Subnome>{client.razaosocial}</Subnome>
+                    <Nome>{cliente.nomefantasia}</Nome>
+                    <Subnome>{cliente.razaosocial}</Subnome>
                 </NomeContainer>
                 <IconContainer> <Icon color={hoverColor} name={iconName} title={iconTitle}/> </IconContainer>
             </Header>
             <Line>
                 <LineItem>
                     <LineTitle>Impresso</LineTitle>
-                    <LineText>{client.impresso} págs</LineText>
+                    <LineText>{cliente.impresso} págs</LineText>
                 </LineItem>
                 <LineItem>
                     <LineTitle>Excedentes</LineTitle>
-                    <LineText>{client.excedentes} págs</LineText>
+                    <LineText>{cliente.excedentes} págs</LineText>
                 </LineItem>
             </Line>
             <Line>
                 <LineItem>
                     <LineTitle>Impressoras</LineTitle>
-                    <LineSubtext>{client.impressorasAtivas}</LineSubtext>
+                    <LineSubtext>{cliente.impressorasAtivas}</LineSubtext>
                 </LineItem>
                 <LineItem>
                     <LineTitle>Versão</LineTitle>
-                    <LineSubtext>{client.sistema.versao}</LineSubtext>
+                    <LineSubtext>{cliente.sistema.versao}</LineSubtext>
                 </LineItem>
             </Line>
         </Container>

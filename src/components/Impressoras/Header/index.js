@@ -1,6 +1,6 @@
-import Icon from '../Icons/MenuIcon'
-import Select from '../Inputs/Select'
-import TextField from '../Inputs/TextField'
+import Icon from '../../Icons/MenuIcon'
+import Select from '../../Inputs/Select'
+import TextField from '../../Inputs/TextField'
 
 import { Container, Dropdown, DropdownItem, Foto, Settings, SettingsItem, FilterOption, FilterItem, FilterIndicator } from './styles'
 

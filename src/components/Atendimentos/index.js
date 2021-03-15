@@ -3,28 +3,25 @@ import axios from 'axios'
 
 import { Container, View } from './styles'
 import Header from './Header'
-import Impressoes from '../ClienteResumo'
 
-function Impressoras(props) {
+function Atendimentos(props) {
 
     const [busca, setBusca] = useState('')
     //variaveis de buscas do database
-    const filterDefaults = {listando: 'todos', data: getDatas()[0].value}
-    const [filters, setFilters] = useState(filterDefaults) //define um filtro base com a primeira data que o sistema conseguir
-    const [clientes, setClientes] = useState({}) //clientes recebidos do servidor
-    const [clientesFiltrados, setClientesFiltrados] = useState({}) //clientes locais filtrados pelo campo de busca
+    //const [atendimentosFiltrados, setAtendimentosFiltrados] = useState({}) //clientes locais filtrados pelo campo de busca
 
-    //quando os filtros forem alterados irá fazer um novo pedido dos dados no DB
     useEffect(() => {
         getDatabaseData()
-    }, [filters])
+    }, [])
 
+    /*
     //quando for alterado o campo de busca, o sistema mostrará os dados correspondentes
     //se a busca for valida, irá filtrar localmente os dados
     //se limpar a busca, irá buscar novamente os dados no servidor
     useEffect(() => {
-        if(busca !== '') { setClientesFiltrados(filtrarClientesPorBusca(clientes, busca)) }
+        //if(busca !== '') { setAtendimentosFiltrados(filtrarAtendimentosPorBusca(atendimentos, busca)) }
     }, [busca])
+    */
 
     async function getDatabaseData() {
         props.setLoad(true)
@@ -36,8 +33,8 @@ function Impressoras(props) {
             props.setUser({...res.data, password, temporary: props.user.temporary})
 
             //começa a buscar os dados no servidor
-            let dbClients = await axios.get('/api/getclients', {params: { filters }})
-            setClientes(dbClients.data)
+            //let dbClients = await axios.get('/api/getclients', {params: { filters }})
+            //setClients(dbClients.data)
 
             //por fim esconde o load
             props.setLoad(false)
@@ -46,32 +43,14 @@ function Impressoras(props) {
             handleLogout()
         })
     }
-
+    
     function handleLogout() {
         props.setLoad(true)
         props.setUser(null)
     }
 
-    function getDatas() {
-        let datas = []
-        let data = new Date()
-        let ano = data.getFullYear()
-        let mes = data.getMonth() + 1
-    
-        for(var x = 0; x < 4; x++) {
-            datas.push({value: ano + '.' + (mes < 10? `0${mes}` : mes), label: (mes < 10? `0${mes}` : mes) + '/' + ano})
-    
-            if(mes <= 1){
-                mes = 12
-                ano = ano - 1
-            } else {
-                mes--
-            }
-        }
-        return datas
-    }
-
-    function filtrarClientesPorBusca(clientes, filtro) {
+    /*
+    function filtrarAtendimentosPorBusca(clientes, filtro) {
 
         function limparString(str) {
             return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -102,16 +81,16 @@ function Impressoras(props) {
             return filtrados
         }
     }
+    */
 
     return (
         <Container expanded={props.expanded} desktop={props.desktop}>
-            <Header {...props} filters={filters} setFilters={setFilters} filterDefaults={filterDefaults} 
-                    busca={busca} setBusca={setBusca} getDatas={getDatas} handleLogout={handleLogout}/>
+            <Header {...props} busca={busca} setBusca={setBusca} handleLogout={handleLogout}/>
             <View>
-                { Object.keys(busca == ''? clientes : clientesFiltrados).map(id => <Impressoes key={id} cliente={clientes[id]} filters={filters} />) }
+                Atendimentos
             </View>
         </Container>
     )
 }
 
-export default Impressoras
+export default Atendimentos

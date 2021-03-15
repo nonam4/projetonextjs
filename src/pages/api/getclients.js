@@ -5,7 +5,7 @@ export default async (req, res) => {
     const {data, listando} = JSON.parse(req.query.filters)
 
     let clientes = {}
-    let dados = await database.collection('/clients/').get()
+    let dados = await database.collection('/clientes/').get()
     dados.forEach(dado => {
 
         let cliente = dado.data()

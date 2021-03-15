@@ -57,7 +57,7 @@ export const DropdownItem = styled.span`
         clear: both;
     }
 `
-export const Photo = styled.img`
+export const Foto = styled.img`
     width: 35px;
     margin: -0.3rem;
     margin-right: 0.8rem;

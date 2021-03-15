@@ -43,8 +43,13 @@ function Index(props) {
             props.setLoad(false)
         }).catch(err => {
             console.error(err)
-            //handleLogout()
+            handleLogout()
         })
+    }
+
+    function handleLogout() {
+        props.setLoad(true)
+        props.setUser(null)
     }
 
     function getDatas() {
@@ -78,28 +83,30 @@ function Index(props) {
         }
     
         const busca = limparString(filtro)
-        let volta = {}
-    
-        for(let id in clientes) {
+        return () => {
+            let filtrados = {}
+            for(let id in clientes) {
             
-            let cliente = clientes[id]
-            let match = false
-    
-            if(compararString(limparString(cliente.nomefantasia), busca)
-            || compararString(limparString(cliente.razaosocial), busca)) match = true
-    
-            for(let serial in cliente.impressoras) {
-                if(compararString(limparString(serial), busca)) match = true
+                let cliente = clientes[id]
+                let match = false
+        
+                if(compararString(limparString(cliente.nomefantasia), busca)
+                || compararString(limparString(cliente.razaosocial), busca)) match = true
+        
+                for(let serial in cliente.impressoras) {
+                    if(compararString(limparString(serial), busca)) match = true
+                }
+        
+                if(match) filtrados[cliente.id] = cliente
             }
-    
-            if(match) volta[cliente.id] = cliente
+            return filtrados
         }
-        return volta
     }
 
     return (
         <Container expanded={props.expanded} desktop={props.desktop}>
-            <Header {...props} filters={filters} setFilters={setFilters} filterDefaults={filterDefaults} busca={busca} setBusca={setBusca} getDatas={getDatas}/>
+            <Header {...props} filters={filters} setFilters={setFilters} filterDefaults={filterDefaults} 
+                    busca={busca} setBusca={setBusca} getDatas={getDatas} handleLogout={handleLogout}/>
             <View>
                 { Object.keys(busca == ''? clients : clientsFiltrados).map(id => <Impressoes key={id} client={clients[id]} filters={filters} />) }
             </View>

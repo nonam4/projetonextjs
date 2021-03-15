@@ -31,6 +31,7 @@ function Login(props) {
             axios.post('/api/login', { username, password }).then(res => {
                 props.setUser({...res.data, password, temporary})
             }).catch(err => {
+                console.error(err)
                 showErrors('Usuário ou senha incorretos!') 
             })
         } 
